@@ -26,7 +26,7 @@ def registration():
         attendee.interests = request.form['interest']
         attendee.comments = request.form['message']
         attendee.conference_id = app.config.get('CONFERENCE_ID')
-        
+
         try:
             db.session.add(attendee)
             db.session.commit()
@@ -34,7 +34,7 @@ def registration():
             return redirect('/Registration')
         except:
             logging.error('Error occured while saving your information')
-            
+
     else:
         if 'message' in session:
             message = session['message']
@@ -92,15 +92,16 @@ def notification():
 
     else:
         return render_template('notification.html')
-    
+
 
 
 def send_email(email, subject, body):
-    message = Mail(
-        from_email=app.config.get('ADMIN_EMAIL_ADDRESS'),
-        to_emails=email,
-        subject=subject,
-        plain_text_content=body)
+    if not app.config.get('SENDGRID_API_KEY')
+        message = Mail(
+            from_email=app.config.get('ADMIN_EMAIL_ADDRESS'),
+            to_emails=email,
+            subject=subject,
+            plain_text_content=body)
 
-    sg = SendGridAPIClient(app.config.get('SENDGRID_API_KEY'))
-    sg.send(message)
+        sg = SendGridAPIClient(app.config.get('SENDGRID_API_KEY'))
+        sg.send(message)

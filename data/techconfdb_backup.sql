@@ -7,20 +7,7 @@
 
 -- Started on 2020-05-08 07:52:45
 
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
 
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
 
 --
 -- TOC entry 204 (class 1259 OID 16731)
@@ -80,9 +67,9 @@ CREATE TABLE public.conference (
 
 ALTER TABLE public.conference ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
     SEQUENCE NAME public.conference_id_seq
-    START WITH 2
+    START WITH 1
     INCREMENT BY 1
-    MINVALUE 2
+    MINVALUE 1
     MAXVALUE 99999
     CACHE 1
 );
@@ -124,13 +111,13 @@ ALTER TABLE public.notification ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY
 -- Data for Name: attendee; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.attendee (id, first_name, last_name, conference_id, job_position, email, company, city, state, interests, submitted_date, comments) FROM stdin;
-1	Lanice	Montre	1	Director	lamontre@gmail.com	Montreal Consulting Inc	Philadelphia	PA	ML	2020-05-07 00:00:00-04	learn more
-2	Do	Ji	1	Director	mar@smith.org	Mafolab	Rockville	AZ	CC	2020-05-07 00:00:00-04	networking
-3	Edem	Lamoine	1	Executive	lamoine@gmail.com	Paracetamole Pharma	Washington	DC	DS	2020-05-07 00:00:00-04	Hands on experience
-4	Celine	Mabs	1	Developer	celinemabs@school.edu	Mabs Learning Center	Rawlings	WY	DS	2020-05-07 00:00:00-04	Hand-ons experience and networking with engineers in the field
-5	Mary	Maine	1	Other	mary.maine@noreply.com	Maine Co	Hanover	PA	ML	2020-05-07 00:00:00-04	Looking forward to start the class
-\.
+INSERT INTO public.attendee (first_name, last_name, conference_id, job_position, email, company, city, state, interests, submitted_date, comments)
+VALUES
+('Lanice', 'Montre',	1, 'Director', 'lamontre@gmail.com', 'Montreal Consulting Inc', 'Philadelphia', 'PA', 'ML', '2020-05-07 00:00:00-04', 'learn more'),
+('Do', 'Ji',	1, 'Director', 'mar@smith.org', 'Mafolab', 'Rockville', 'AZ', 'CC', '2020-05-07 00:00:00-04', 'networking'),
+( 'Edem', 'Lamoine',	1, 'Executive', 'lamoine@gmail.com', 'Paracetamole Pharma', 'Washington', 'DC', 'DS', '2020-05-07 00:00:00-04', 'Hands on experience'),
+( 'Celine', 'Mabs',	1, 'Developer', 'celinemabs@school.edu', 'Mabs Learning Center', 'Rawlings', 'WY', 'DS', '2020-05-07 00:00:00-04', 'Hand-ons experience and networking with engineers in the field'),
+( 'Mary', 'Maine',	1, 'Other', 'mary.maine@noreply.com', 'Maine Co', 'Hanover', 'PA', 'ML', '2020-05-07 00:00:00-04', 'Looking forward to start the class');
 
 
 --
@@ -139,10 +126,11 @@ COPY public.attendee (id, first_name, last_name, conference_id, job_position, em
 -- Data for Name: conference; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.conference (id, name, active, date, price, address) FROM stdin;
-1	TechConf	1	2022-06-10	495	123 Main St, Baltimore, MD 12345
-2	TestConf	0	1999-01-01	1	9
-\.
+INSERT INTO public.conference (name, active, date, price, address)
+VALUES
+('TechConf', B'1', '2022-06-10', 495, '123 Main St, Baltimore, MD 12345'),
+('TestConf', B'0', '1999-01-01', 1, '9');
+
 
 
 --
@@ -151,39 +139,14 @@ COPY public.conference (id, name, active, date, price, address) FROM stdin;
 -- Data for Name: notification; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.notification (id, status, message, submitted_date, completed_date, subject) FROM stdin;
-1	Notifications submitted	f	\N	\N	f
-2	Notifications submitted	uyt	2020-05-07 18:00:38.573856-04	2020-05-07 18:00:39.124435-04	Welcome Email
-3	Notified 5 attendees	Welcome Email	2020-05-07 18:14:04.239065-04	2020-05-07 18:14:04.271981-04	Welcome Email
-4	Notifications submitted	New Speaker Added: Dr Daniel Shu	2020-05-07 23:24:00.504412-04	\N	New Speaker Added: Dr Daniel Shu
-\.
+INSERT INTO public.notification (status, message, submitted_date, completed_date, subject)
+VALUES
+('Notifications submitted',' ', NULL, NULL, ''),
+('Notifications submitted','uyt','2020-05-07 18:00:38.573856-04','2020-05-07 18:00:39.124435-04','Welcome Email'),
+('Notified 5 attendees','Welcome Email','2020-05-07 18:14:04.239065-04','2020-05-07 18:14:04.271981-04','Welcome Email'),
+('Notifications submitted','New Speaker Added: Dr Daniel Shu','2020-05-07 23:24:00.504412-04', NULL,'New Speaker Added: Dr Daniel Shu');
 
 
---
--- TOC entry 2845 (class 0 OID 0)
--- Dependencies: 205
--- Name: attendee_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('public.attendee_id_seq', 5, true);
-
-
---
--- TOC entry 2846 (class 0 OID 0)
--- Dependencies: 203
--- Name: conference_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('public.conference_id_seq', 2, true);
-
-
---
--- TOC entry 2847 (class 0 OID 0)
--- Dependencies: 207
--- Name: notification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('public.notification_id_seq', 4, true);
 
 
 --
