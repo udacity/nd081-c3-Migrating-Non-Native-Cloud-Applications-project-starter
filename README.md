@@ -61,11 +61,16 @@ You will need to install the following locally:
 ## Monthly Cost Analysis
 Complete a month cost analysis of each Azure resource to give an estimate total cost using the table below:
 
-| Azure Resource | Service Tier | Monthly Cost |
-| ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+Azure Resource	Service Tier	Monthly Cost
+Azure PostgreSQL	Basic	$43.55
+Azure Service Bus	Basic	$0.01
+Azure App Service	Basic (B1)	$21.12
+Azure Storage	Basic	$0.10
+
 
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+The azure web app was already built and the only requirement was to change the environment variables in config.py and refactor notification flow in app.py. Azure resources utilized for my project are available at a reasonable price.
+The most expensive resource is PostgreSQL which was required as part of project rubric. However, for our testing, I opted for a basic plan only. Service Bus namespace to handle notification is also appropriate.
+If I’d have to improve the design I’d have explored cheaper options for databases.
+As far as deployment goes, creating a webapp resource and using Azure’s offered deployment option is far better and works seamlessly with github.
+
