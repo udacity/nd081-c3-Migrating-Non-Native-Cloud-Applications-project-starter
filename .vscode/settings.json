@@ -37,5 +37,5 @@
     "azureFunctions.projectLanguage": "Python",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
-    "appService.defaultWebAppToDeploy": "/subscriptions/ac0ed489-cc49-4ce4-8956-dca35adb6c8a/resourceGroups/udacitymigration3/providers/Microsoft.Web/sites/udazmigrateproject3"
+    "appService.defaultWebAppToDeploy": ""
 }
