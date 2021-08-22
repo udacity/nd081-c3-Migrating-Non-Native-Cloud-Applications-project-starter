@@ -2,7 +2,8 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - udazmigrationproject3
+name: Build and deploy Python app to Azure Web App - udazmigrateproject3
+
 
 on:
   push:
@@ -28,7 +29,7 @@ jobs:
         source venv/bin/activate
 
     - name: Install dependencies
-      run: pip install -r requirements.txt
+      run: cd web && pip install -r requirements.txt
 
     # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -37,7 +38,7 @@ jobs:
       with:
         name: python-app
         path: |
-          .
+          ./web
           !venv/
 
   deploy:
@@ -57,6 +58,6 @@ jobs:
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'udazmigrationproject3'
+          app-name: 'udazmigrateproject3'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_c14946d916694ce6afa2b10d179363b8 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_9f1b2521473d4983a0b28e3a472821fc }}
