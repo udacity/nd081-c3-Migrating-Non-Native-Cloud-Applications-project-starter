@@ -3,7 +3,7 @@
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
 name: Build and deploy Python app to Azure Web App - udazmigrateproject3
-workingDirectory: ./web
+
 
 on:
   push:
@@ -53,7 +53,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: python-app
-          path: .
+          path: ./web/
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
