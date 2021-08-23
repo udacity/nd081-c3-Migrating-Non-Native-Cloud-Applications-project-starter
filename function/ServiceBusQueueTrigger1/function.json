@@ -6,7 +6,7 @@
       "type": "serviceBusTrigger",
       "direction": "in",
       "queueName": "myinputqueue",
-      "connection": ""
+      "connection": "BusConnection"
     }
   ]
 }

@@ -55,7 +55,7 @@ def main(msg: func.ServiceBusMessage):
 def send_email(email, subject, body):
     logging.info("Sending email: %s", subject)
 
-    admin_email_address = 'aman.azure10@gmail.com'
+    admin_email_address = 'test@yopmail.com'
     sendgrid_api_key = '<SENDGRID_API_KEY>'
 
     message = Mail(
