@@ -13,7 +13,7 @@ class BaseConfig:
     CONFERENCE_ID = 1
     SECRET_KEY = 'LWd2tzlprdGHCIPHTd4tp5SBFgDszm'
     SERVICE_BUS_CONNECTION_STRING ='Endpoint=sb://myservicebusud.servicebus.windows.net/;SharedAccessKeyName=General;SharedAccessKey=JoGmxQIaVnT7+mOc1unbeFUU6rePNrkAkdUnG44g5Qw=;EntityPath=myinputqueue' #TODO: Update value
-    SERVICE_BUS_QUEUE_NAME ='notificationqueue'
+    SERVICE_BUS_QUEUE_NAME ='myinputqueue'
     ADMIN_EMAIL_ADDRESS = 'info@techconf.com'
     SENDGRID_API_KEY = '' #Configuration not required, required SendGrid Account
 
