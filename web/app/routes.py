@@ -60,9 +60,8 @@ def notification():
         notification = Notification()
         notification.message = request.form['message']
         notification.subject = request.form['subject']
-        notification.status = 'Notified 5 attendees'
-        notification.submitted_date = datetime.utcnow()
-        notification.completed_date = datetime.utcnow()
+        notification.status = 'Notifications submitted'
+        notification.submitted_date = datetime.utcnow()        
 
         try:
             db.session.add(notification)
