@@ -66,6 +66,8 @@ Azure PostgreSQL	Basic	$43.55
 Azure Service Bus	Basic	$0.01
 Azure App Service	Basic (B1)	$21.12
 Azure Storage	Basic	$0.10
+Function App	Consumption	$0.00
+Sengrid  FreePlan  $0.00
 
 
 ## Architecture Explanation
@@ -73,4 +75,5 @@ The azure web app was already built and the only requirement was to change the e
 The most expensive resource is PostgreSQL which was required as part of project rubric. However, for our testing, I opted for a basic plan only. Service Bus namespace to handle notification is also appropriate.
 If I’d have to improve the design I’d have explored cheaper options for databases.
 As far as deployment goes, creating a webapp resource and using Azure’s offered deployment option is far better and works seamlessly with github.
-
+Sending notification emails to all the receipents can be challenging. By using Service Bus Queue Trigger Function sends the email in background and on refresh user can see the status. The service bus very cost effective option for implementing trigger based operations.
+The architechture is very cost effective as we don't have to maintain a VM for our application. The function app is running on consumption plan, so we pay only for the time the function app is running.
