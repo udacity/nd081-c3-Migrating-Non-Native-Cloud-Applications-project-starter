@@ -7,7 +7,7 @@
       "direction": "in",
       "queueName": "myinputqueue",
       "connection": "BusConnection",
-      "AzureWebJobsServiceBus": "Endpoint=sb://myservicebusud.servicebus.windows.net/;SharedAccessKeyName=General;SharedAccessKey=JoGmxQIaVnT7+mOc1unbeFUU6rePNrkAkdUnG44g5Qw="
+      "AzureWebJobsServiceBus": "Endpoint=sb://myservicebusud.servicebus.windows.net/;SharedAccessKeyName=General;SharedAccessKey=JoGmxQIaVnT7+mOc1unbeFUU6rePNrkAkdUnG44g5Qw=;"
     }
   ]
 }
